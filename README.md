@@ -31,24 +31,42 @@ A high-fidelity, hex-axial naval strategy simulation based on the Hellenistic an
     Connect to `http://localhost:5000` via the Pygame client.
 
 ### Windows
+
+War Galley supports two modes on Windows: running from Python or as a fully standalone `.exe` (no Python or container runtime required).
+
+#### Option A — Run with Python (requires Python 3.11+)
+
 **Prerequisites:**
 * [Python 3.11+](https://www.python.org/downloads/) (ensure "Add Python to PATH" is checked during installation)
-* [Podman Desktop](https://podman-desktop.io/) **or** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-* Install Python dependencies: `pip install -r requirements.txt`
+* No container runtime (Podman / Docker) needed.
 
 **Command Prompt:**
-1.  **Initialize Environment:**
-    ```bat
-    launch_game.bat
-    ```
+```bat
+launch_game.bat
+```
 
 **PowerShell (recommended):**
-1.  **Initialize Environment:**
-    ```powershell
-    .\launch_game.ps1
-    ```
-    > If you receive an execution policy error, run:
-    > `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+```powershell
+.\launch_game.ps1
+```
+> If you receive an execution policy error, run:
+> `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+
+#### Option B — Standalone Executable (no Python or container required)
+
+Build a self-contained `wargalley.exe` using PyInstaller (only needs to be done once on a machine that has Python):
+
+**Command Prompt:**
+```bat
+build_windows.bat
+```
+
+**PowerShell:**
+```powershell
+.\build_windows.ps1
+```
+
+The compiled executable will be placed in `dist\wargalley\wargalley.exe`. Copy the entire `dist\wargalley\` folder to any Windows PC and run `wargalley.exe` — no Python or container runtime required.
 
 2.  **Access Lobby:**
     Connect to `http://localhost:5000` via the Pygame client.

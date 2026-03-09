@@ -61,12 +61,15 @@ The engine uses three levels of logic to challenge you:
 
 ## ## 6. Windows Setup
 
-### Prerequisites
-* [Python 3.11+](https://www.python.org/downloads/) — check **"Add Python to PATH"** during install.
-* [Podman Desktop](https://podman-desktop.io/) **or** [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container orchestration.
-* Install Python dependencies from a terminal: `pip install -r requirements.txt`
+War Galley supports two modes on Windows.
 
-### Launching the Game on Windows
+### Option A — Run with Python (requires Python 3.11+)
+
+#### Prerequisites
+* [Python 3.11+](https://www.python.org/downloads/) — check **"Add Python to PATH"** during install.
+* No container runtime (Podman / Docker) needed.
+
+#### Launching the Game
 
 **Command Prompt:**
 ```bat
@@ -84,9 +87,27 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ---
 
+### Option B — Standalone Executable (no Python or container required)
+
+Build a self-contained `wargalley.exe` on any Windows machine that has Python installed. The resulting executable can be distributed and run on Windows PCs with **no Python, no container runtime, and no virtual environment** needed.
+
+**Command Prompt:**
+```bat
+build_windows.bat
+```
+
+**PowerShell:**
+```powershell
+.\build_windows.ps1
+```
+
+The compiled executable is placed in `dist\wargalley\wargalley.exe`. Copy the entire `dist\wargalley\` folder to the target machine and run `wargalley.exe`.
+
+---
+
 ## ## 7. Troubleshooting & Support
 If the game fails to launch:
-1.  Ensure **Podman** or **Docker** is running.
-2.  Verify you ran the asset generation script to generate the ship graphics: `python src/asset_gen.py` on Windows, or `python3 src/asset_gen.py` on Linux/macOS.
-3.  Check the `analytics/` folder for logs if the server crashes.
-4.  **Windows only:** Confirm `python` is on your `PATH` by running `python --version` in a terminal.
+1.  Verify you ran the asset generation script to generate the ship graphics: `python src/asset_gen.py` on Windows, or `python3 src/asset_gen.py` on Linux/macOS.
+2.  Check the `analytics/` folder for server logs if the server crashes.
+3.  **Windows (Option A) only:** Confirm `python` is on your `PATH` by running `python --version` in a terminal.
+4.  **Windows (Option B) only:** Ensure the full `dist\wargalley\` folder is present next to `wargalley.exe`; do not move the executable out of that folder.
