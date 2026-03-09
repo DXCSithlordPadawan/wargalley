@@ -59,24 +59,27 @@ The engine uses three levels of logic to challenge you:
 
 ---
 
-## ## 6. Windows Setup
+## ## 6. Deployment Setup
 
-War Galley supports two modes on Windows.
+War Galley supports three deployment modes. Choose the one that best fits your environment.
 
-### Option A — Run with Python (requires Python 3.11+)
+---
+
+### Mode 1 — Native Python (Windows, Linux, macOS)
+
+Run the server directly with Python — no container runtime needed.
 
 #### Prerequisites
 * [Python 3.11+](https://www.python.org/downloads/) — check **"Add Python to PATH"** during install.
-* No container runtime (Podman / Docker) needed.
 
-#### Launching the Game
+#### Launching
 
-**Command Prompt:**
+**Windows — Command Prompt:**
 ```bat
 launch_game.bat
 ```
 
-**PowerShell (recommended):**
+**Windows — PowerShell (recommended):**
 ```powershell
 .\launch_game.ps1
 ```
@@ -85,9 +88,41 @@ If you see a script execution policy error, run this once:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
+**Linux / macOS:**
+```bash
+chmod +x launch_game.bash
+./launch_game.bash
+```
+
 ---
 
-### Option B — Standalone Executable (no Python or container required)
+### Mode 2 — Container (Podman or Docker)
+
+Runs the server inside a hardened, rootless container (CIS Level 2). Suitable for server deployments or when a consistent, isolated environment is required.
+
+#### Prerequisites
+* [Podman Desktop](https://podman-desktop.io/) **or** [Docker Desktop](https://www.docker.com/products/docker-desktop/) — installed and running.
+
+#### Launching
+
+**Windows — Command Prompt:**
+```bat
+deploy_container.bat
+```
+
+**Windows — PowerShell:**
+```powershell
+.\deploy_container.ps1
+```
+
+**Linux / macOS:**
+```bash
+./launch_game.bash --container
+```
+
+---
+
+### Mode 3 — Standalone Windows Executable (no Python or container required)
 
 Build a self-contained `wargalley.exe` on any Windows machine that has Python installed. The resulting executable can be distributed and run on Windows PCs with **no Python, no container runtime, and no virtual environment** needed.
 
@@ -109,5 +144,6 @@ The compiled executable is placed in `dist\wargalley\wargalley.exe`. Copy the en
 If the game fails to launch:
 1.  Verify you ran the asset generation script to generate the ship graphics: `python src/asset_gen.py` on Windows, or `python3 src/asset_gen.py` on Linux/macOS.
 2.  Check the `analytics/` folder for server logs if the server crashes.
-3.  **Windows (Option A) only:** Confirm `python` is on your `PATH` by running `python --version` in a terminal.
-4.  **Windows (Option B) only:** Ensure the full `dist\wargalley\` folder is present next to `wargalley.exe`; do not move the executable out of that folder.
+3.  **Mode 1 / Windows:** Confirm `python` is on your `PATH` by running `python --version` in a terminal.
+4.  **Mode 2 / Container:** Ensure Podman or Docker is running before executing the deploy script.
+5.  **Mode 3 / Standalone:** Ensure the full `dist\wargalley\` folder is present next to `wargalley.exe`; do not move the executable out of that folder.

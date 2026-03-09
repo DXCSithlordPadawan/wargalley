@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, request
 from flask_socketio import SocketIO, emit, join_room, leave_room
 
 # ---------------------------------------------------------------------------
@@ -61,7 +61,7 @@ def health():
 
 @socketio.on("connect")
 def on_connect():
-    log.info("Client connected: %s", socketio.server.manager.get_socket(None, None))
+    log.info("Client connected: %s", request.sid)
 
 
 @socketio.on("disconnect")
