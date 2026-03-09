@@ -140,10 +140,64 @@ The compiled executable is placed in `dist\wargalley\wargalley.exe`. Copy the en
 
 ---
 
-## ## 7. Troubleshooting & Support
+## ## 7. Connecting as a Client
+
+Once the server is running (using any of the deployment modes above), open a **second terminal** and launch the Pygame client:
+
+**Linux / macOS:**
+```bash
+python3 src/client.py
+```
+
+**Windows — Command Prompt:**
+```bat
+python src\client.py
+```
+
+**Windows — PowerShell:**
+```powershell
+python src\client.py
+```
+
+The client will open a Pygame window, connect to the server, and join the `default` room automatically.
+
+### Connecting to a Different Host or Port
+
+If the server is running on a different machine or port, set the `SERVER_URL` environment variable before starting the client:
+
+**Linux / macOS:**
+```bash
+SERVER_URL=http://192.168.1.10:5000 python3 src/client.py
+```
+
+**Windows — PowerShell:**
+```powershell
+$env:SERVER_URL = "http://192.168.1.10:5000"
+python src\client.py
+```
+
+### Joining a Named Room
+
+Multiple games can run on the same server using different room names. Set the `ROOM` variable to join a specific room (default: `default`):
+
+```bash
+ROOM=battle1 python3 src/client.py
+```
+
+### Client Keyboard Controls
+
+| Key | Action |
+| :--- | :--- |
+| **ESC** | Quit the client |
+| **R** | Re-sync game state from the server |
+
+---
+
+## ## 8. Troubleshooting & Support
 If the game fails to launch:
 1.  Verify you ran the asset generation script to generate the ship graphics: `python src/asset_gen.py` on Windows, or `python3 src/asset_gen.py` on Linux/macOS.
 2.  Check the `analytics/` folder for server logs if the server crashes.
 3.  **Mode 1 / Windows:** Confirm `python` is on your `PATH` by running `python --version` in a terminal.
 4.  **Mode 2 / Container:** Ensure Podman or Docker is running before executing the deploy script.
 5.  **Mode 3 / Standalone:** Ensure the full `dist\wargalley\` folder is present next to `wargalley.exe`; do not move the executable out of that folder.
+6.  **Client cannot connect:** Verify the server is running (`curl http://localhost:5000/health` should return `{"status":"ok"}`). Check that no firewall is blocking port 5000. If the server is on another machine, ensure `SERVER_URL` is set correctly.
