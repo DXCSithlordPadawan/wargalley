@@ -83,22 +83,56 @@ Success in the ancient world is determined by the **Angle of Impact**.
 
 ---
 
-## ## 4. The Fleet Builder (Point-Buy)
-Before the battle, you must spend your **Talents** (Budget) to assemble your task force.
+## ## 4. Scenario Selection
 
+After choosing a game mode, the client scans the `scenarios/` directory for YAML battle files and presents a selection screen.
 
+1.  **Choose a scenario** from the list (e.g. *Battle of Salamis*, *Battle of Cape Ecnomus*) — each scenario defines the map size, environmental conditions (wind, tide), and the starting fleets for both sides.
+2.  **Use Default Fleet** — if no scenarios are found, or if you click the *Use Default Fleet* button, the game starts with a built-in 2 v 2 Roman vs Carthage engagement on a 22 × 25 hex board.
 
-1.  **Select Nation:** Choose from Rome, Carthage, or the Successors.
-2.  **Analyze Unit Cards:** Hover over ships to see traits like `corvus` or `artillery`.
-3.  **Balance your Fleet:** Don't spend all your talents on one **Deceres**; a swarm of **Triremes** can rake its oars and leave it helpless.
+Each scenario is a YAML file stored in `scenarios/` with the following structure:
+
+```yaml
+scenario:
+  name: "Battle of Salamis (480 BC)"
+  map_size: [40, 80]
+  environment:
+    wind_dir: 1
+    wind_strength: 1
+    tide_dir: 3
+  factions:
+    - id: "hellenic_league"
+      vessels:
+        - id: "themistocles_flag"
+          type: "Trireme"
+          pos: [18, 25]
+          facing: 3
+          traits: ["reinforced_prow", "agile"]
+```
+
+The first faction in the YAML becomes the **player** side; all subsequent factions are controlled by the AI.
 
 ---
 
-## ## 5. AI Difficulty Tiers
-The engine uses three levels of logic to challenge you:
-* **Level 1 (Seeker):** Aggressive and predictable; always moves toward the nearest target.
-* **Level 2 (Tactical):** Understands flanking; will try to avoid head-on collisions.
-* **Level 3 (Admiral):** Uses **Minimax** search. It will bait you into bottlenecks and use the wind to stay out of your reach.
+## ## 5. AI Difficulty
+The engine uses **AdmiralAI** — an alpha-beta pruned Minimax opponent. Difficulty is controlled by the **search depth**, which you set on the server before launching:
+
+| `AI_DEPTH` value | Difficulty | Description |
+| :---: | :--- | :--- |
+| `1` | Easy | Shallow search; predictable moves. |
+| `3` | Normal (default) | Balanced challenge; considers multi-step plans. |
+| `5` | Hard | Deep search; will bait you into bottlenecks and exploit wind positioning. |
+
+Set the depth before starting the server:
+
+```bash
+# Linux / macOS
+AI_DEPTH=5 python3 src/server.py
+
+# Windows PowerShell
+$env:AI_DEPTH = "5"
+python src\server.py
+```
 
 ---
 
