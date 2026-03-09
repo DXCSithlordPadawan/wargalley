@@ -1,10 +1,10 @@
 Write-Host "Building War Galley standalone Windows executable..."
 
 # Install build dependencies
-pip install --quiet pyinstaller
+pip install --prefer-binary --quiet pyinstaller
 
 # Install runtime dependencies
-pip install --quiet -r requirements.txt
+pip install --prefer-binary --quiet -r requirements.txt
 
 # Generate assets before packaging
 python src\asset_gen.py

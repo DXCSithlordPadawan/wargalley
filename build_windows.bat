@@ -2,10 +2,10 @@
 echo Building War Galley standalone Windows executable...
 
 REM Install build dependencies
-pip install --quiet pyinstaller
+pip install --prefer-binary --quiet pyinstaller
 
 REM Install runtime dependencies
-pip install --quiet -r requirements.txt
+pip install --prefer-binary --quiet -r requirements.txt
 
 REM Generate assets before packaging
 python src\asset_gen.py
