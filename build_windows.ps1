@@ -7,7 +7,7 @@ pip install --prefer-binary --quiet pyinstaller
 pip install --prefer-binary --quiet -r requirements.txt
 
 # Generate assets before packaging
-python src\asset_gen.py
+python3.13 src\asset_gen.py
 
 # Build the standalone executable
 pyinstaller wargalley.spec --clean --noconfirm

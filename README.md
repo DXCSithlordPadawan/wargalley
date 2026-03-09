@@ -1,4 +1,4 @@
-# ⚓ War Galley Digital Engine (v1.0.0)
+# ⚓ War Galley Digital Engine (v1.2.0)
 
 A high-fidelity, hex-axial naval strategy simulation based on the Hellenistic and Punic eras. Built for secure, networked tactical play and advanced AI engagement.
 
@@ -115,12 +115,35 @@ To join a named room instead of the `default` room, set the `ROOM` variable:
 ROOM=battle1 python3 src/client.py
 ```
 
-## ## 4. Keyboard Controls (Client)
+## ## 4. In-Game Controls
+
+### Action Console (bottom of screen)
+
+| Button | Action | Condition |
+| :--- | :--- | :--- |
+| **Turn L** | Rotate vessel 60° counter-clockwise | Vessel selected |
+| **Move** | Advance one hex forward | Vessel selected |
+| **Back** | Retreat one hex backward | Vessel selected; Oars Intact |
+| **Turn R** | Rotate vessel 60° clockwise | Vessel selected |
+| **Ram** | Ram nearest enemy vessel | Adjacent enemy (≤ 1 hex) |
+| **Board** | Initiate boarding action | Vessel selected |
+| **Pass** | End turn, no action | Vessel selected |
+
+### Click-to-Move
+
+With a vessel selected, hover over any empty hex — it highlights green. Click it to move the selected vessel directly to that hex.
+
+### Keyboard Controls
 
 | Key | Action |
 | :--- | :--- |
 | **ESC** | Quit the client |
-| **R** | Re-sync game state from the server |
+| **R** | Re-sync game state from server |
+| **+ / =** or **Numpad +** | Zoom in |
+| **-** or **Numpad -** | Zoom out |
+| **Ctrl + Mouse Wheel** | Zoom in / out |
+| **Mouse Wheel** | Scroll board vertically |
+| **Arrow Keys** | Scroll board in any direction |
 
 ## ## 5. Security & Compliance
 * **NIST 800-53:** Full audit logging for combat and administrative actions.

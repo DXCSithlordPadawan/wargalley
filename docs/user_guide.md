@@ -1,19 +1,62 @@
-# 📖 War Galley: User Guide (v1.0)
+# 📖 War Galley: User Guide (v1.2)
 
 Welcome to the command deck. This guide will take you from a basic rower to a Fleet Admiral.
 
 ---
 
 ## ## 1. Interface & Controls
-The game is played on an **Axial Hex Grid**. Your primary interactions occur through the **Command Console** and the **Mouse**.
 
+The game is played on an **Axial Hex Grid** displayed in the left/centre portion of the screen. The right panel shows the **Fleet Roster**. The bottom panel is the **Action Console**.
 
+### Screen Layout
 
-* **Selection:** Click a vessel to view its **Unit Card** and available **Movement Points (MP)**.
-* **Movement:** * **Forward:** Move one hex in the direction of the prow.
-    * **Rotate:** Turn 60° clockwise or counter-clockwise (Costs 1 MP).
-    * **Backing:** Move one hex backward (Costs 2 MP).
-* **Combat:** Right-click an adjacent enemy to initiate a **Ram** or **Boarding Action**.
+| Region | Description |
+| :--- | :--- |
+| **Top bar** | Room name, current turn, vessel count, game mode |
+| **Hex board** | Main play area — click to select vessels or choose move targets |
+| **Fleet roster** (right) | All vessels with HP and oar status |
+| **Action console** (bottom) | Vessel selector and action buttons |
+| **Hint bar** (very bottom) | Keyboard shortcut reminder |
+
+### Selecting a Vessel
+
+You can select one of your vessels in two ways:
+- **Click its token** on the hex board.
+- **Click its name button** in the vessel selector on the left of the action console.
+
+The selected vessel is highlighted with a gold ring on the board and a highlighted button in the selector.
+
+### Moving a Vessel
+
+With a vessel selected you have two ways to move it:
+
+**Option A — Action buttons (step-by-step):**
+
+| Button | Action | Rules |
+| :--- | :--- | :--- |
+| **Turn L** | Rotate 60° counter-clockwise | Always available |
+| **Move** | Advance one hex forward | Always available |
+| **Back** | Retreat one hex backward | Blocked if Oars Disabled |
+| **Turn R** | Rotate 60° clockwise | Always available |
+| **Ram** | Ram nearest enemy | Enemy must be adjacent (≤ 1 hex) |
+| **Board** | Initiate boarding action | Requires `corvus` or `grapple` trait |
+| **Pass** | End turn without moving | Always available |
+
+**Option B — Click-to-move (direct hex targeting):**
+
+1. Select a vessel using either method above.
+2. Hover over any empty hex on the board — it will highlight green.
+3. Click the highlighted hex to move the vessel directly to that position.
+
+The vessel cannot be moved to a hex already occupied by another vessel.
+
+### Facing Arrow
+
+Each vessel token shows a white arrow indicating its current facing direction. Facings are numbered 0–5 clockwise starting from East. Turn L/R buttons rotate one step (60°) per click.
+
+### Oars Disabled
+
+If a vessel's oars are disabled (shown in the Fleet Roster), the **Back** button is blocked. Oars can be disabled by a ram hit from an adjacent enemy.
 
 ---
 
@@ -190,6 +233,17 @@ ROOM=battle1 python3 src/client.py
 | :--- | :--- |
 | **ESC** | Quit the client |
 | **R** | Re-sync game state from the server |
+| **+ / =** or **Numpad +** | Zoom in |
+| **-** or **Numpad -** | Zoom out |
+| **Ctrl + Mouse Wheel** | Zoom in / out |
+| **Mouse Wheel** | Scroll the board vertically |
+| **Arrow Keys** | Scroll the board in any direction |
+| **Click vessel token** | Select vessel |
+| **Click empty hex** (vessel selected) | Move selected vessel to that hex |
+
+### Scrollbar
+
+Horizontal and vertical scrollbars appear at the edges of the hex board area. You can drag the thumb with the mouse to pan the board.
 
 ---
 
