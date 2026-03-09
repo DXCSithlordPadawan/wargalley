@@ -5,12 +5,12 @@ eventlet==0.35.2          # High-performance concurrent networking for SocketIO
 
 # --- Graphics & Asset Generation ---
 pygame==2.6.1             # Client-side UI and Hex rendering
-Pillow==10.2.0            # Procedural asset generation (asset_gen.py)
+Pillow==10.4.0            # Procedural asset generation (asset_gen.py)
 
 # --- Data Validation & Logic ---
-pydantic==2.6.1           # YAML schema validation (NIST/OWASP compliance)
+pydantic==2.9.2           # YAML schema validation (NIST/OWASP compliance)
 PyYAML==6.0.1             # Scenario file parsing
 
 # --- Performance & Utilities ---
-numpy==1.26.4             # Optimized hex-coordinate math
+numpy==2.2.4              # Optimized hex-coordinate math
 python-dotenv==1.0.1      # Environment variable management (for Secret Keys)
