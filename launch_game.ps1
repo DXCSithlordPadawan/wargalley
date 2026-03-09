@@ -3,7 +3,7 @@ New-Item -ItemType Directory -Force -Path assets | Out-Null
 New-Item -ItemType Directory -Force -Path analytics | Out-Null
 
 # Install Python dependencies
-pip install --quiet -r requirements.txt
+pip install --prefer-binary --quiet -r requirements.txt
 
 # Generate visual assets
 python src\asset_gen.py

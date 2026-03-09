@@ -4,7 +4,7 @@ Flask-SocketIO==5.3.6
 eventlet==0.35.2          # High-performance concurrent networking for SocketIO
 
 # --- Graphics & Asset Generation ---
-pygame==2.5.2             # Client-side UI and Hex rendering
+pygame==2.6.1             # Client-side UI and Hex rendering
 Pillow==10.2.0            # Procedural asset generation (asset_gen.py)
 
 # --- Data Validation & Logic ---

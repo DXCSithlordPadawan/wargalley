@@ -4,7 +4,7 @@ mkdir assets 2>nul
 mkdir analytics 2>nul
 
 REM Install Python dependencies
-pip install --quiet -r requirements.txt
+pip install --prefer-binary --quiet -r requirements.txt
 
 REM Generate visual assets
 python src\asset_gen.py
