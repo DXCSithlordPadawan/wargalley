@@ -59,8 +59,34 @@ The engine uses three levels of logic to challenge you:
 
 ---
 
-## ## 6. Troubleshooting & Support
+## ## 6. Windows Setup
+
+### Prerequisites
+* [Python 3.11+](https://www.python.org/downloads/) — check **"Add Python to PATH"** during install.
+* [Podman Desktop](https://podman-desktop.io/) **or** [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container orchestration.
+* Install Python dependencies from a terminal: `pip install -r requirements.txt`
+
+### Launching the Game on Windows
+
+**Command Prompt:**
+```bat
+launch_game.bat
+```
+
+**PowerShell (recommended):**
+```powershell
+.\launch_game.ps1
+```
+If you see a script execution policy error, run this once:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+---
+
+## ## 7. Troubleshooting & Support
 If the game fails to launch:
 1.  Ensure **Podman** or **Docker** is running.
-2.  Verify you ran `python src/asset_gen.py` to generate the ship graphics.
+2.  Verify you ran the asset generation script to generate the ship graphics: `python src/asset_gen.py` on Windows, or `python3 src/asset_gen.py` on Linux/macOS.
 3.  Check the `analytics/` folder for logs if the server crashes.
+4.  **Windows only:** Confirm `python` is on your `PATH` by running `python --version` in a terminal.
