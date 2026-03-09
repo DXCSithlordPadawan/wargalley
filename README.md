@@ -20,11 +20,36 @@ A high-fidelity, hex-axial naval strategy simulation based on the Hellenistic an
 
 
 ## ## 3. Quick Start
+
+### Linux / macOS
 1.  **Initialize Environment:**
     ```bash
-    chmod +x launch_game.sh
-    ./launch_game.sh
+    chmod +x launch_game.bash
+    ./launch_game.bash
     ```
+2.  **Access Lobby:**
+    Connect to `http://localhost:5000` via the Pygame client.
+
+### Windows
+**Prerequisites:**
+* [Python 3.11+](https://www.python.org/downloads/) (ensure "Add Python to PATH" is checked during installation)
+* [Podman Desktop](https://podman-desktop.io/) **or** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+* Install Python dependencies: `pip install -r requirements.txt`
+
+**Command Prompt:**
+1.  **Initialize Environment:**
+    ```bat
+    launch_game.bat
+    ```
+
+**PowerShell (recommended):**
+1.  **Initialize Environment:**
+    ```powershell
+    .\launch_game.ps1
+    ```
+    > If you receive an execution policy error, run:
+    > `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+
 2.  **Access Lobby:**
     Connect to `http://localhost:5000` via the Pygame client.
 
