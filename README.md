@@ -93,9 +93,36 @@ Run `dist\wargalley\wargalley.exe` — no Python, no Docker, no Podman needed.
 
 ---
 
-After launching by any mode, connect to `http://localhost:5000` via the Pygame client.
+After launching by any mode, open a **second terminal** and start the Pygame client:
 
-## ## 4. Security & Compliance
+```bash
+# Linux / macOS
+python3 src/client.py
+
+# Windows
+python src\client.py
+```
+
+The client connects to `http://localhost:5000` by default. To point it at a different host or port, set the `SERVER_URL` environment variable:
+
+```bash
+SERVER_URL=http://192.168.1.10:5000 python3 src/client.py
+```
+
+To join a named room instead of the `default` room, set the `ROOM` variable:
+
+```bash
+ROOM=battle1 python3 src/client.py
+```
+
+## ## 4. Keyboard Controls (Client)
+
+| Key | Action |
+| :--- | :--- |
+| **ESC** | Quit the client |
+| **R** | Re-sync game state from the server |
+
+## ## 5. Security & Compliance
 * **NIST 800-53:** Full audit logging for combat and administrative actions.
 * **FIPS 140-3:** Deterministic server-side RNG seeding.
 * **CIS Level 2:** Resource-constrained, non-root Podman/Docker containers (Mode 2 only).

@@ -17,9 +17,17 @@ if [[ "$1" == "--container" ]]; then
         exit 1
     fi
     echo "Server live at http://localhost:5000"
+    echo ""
+    echo "To connect as a client, open a second terminal and run:"
+    echo "  python3 src/client.py"
+    echo ""
 else
     echo "Deployment mode: native Python"
     python3 src/asset_gen.py
     echo "Server starting at http://localhost:5000"
+    echo ""
+    echo "Once the server is ready, open a second terminal and run:"
+    echo "  python3 src/client.py"
+    echo ""
     python3 src/server.py
 fi
