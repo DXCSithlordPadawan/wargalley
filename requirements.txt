@@ -2,6 +2,7 @@
 Flask==3.0.2
 Flask-SocketIO==5.3.6
 eventlet==0.35.2          # High-performance concurrent networking for SocketIO
+websocket-client==1.9.0   # WebSocket transport support for the pygame client
 
 # --- Graphics & Asset Generation ---
 pygame==2.6.1             # Client-side UI and Hex rendering
