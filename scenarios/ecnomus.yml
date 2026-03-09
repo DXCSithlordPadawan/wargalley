@@ -1,0 +1,37 @@
+scenario:
+  name: "Battle of Cape Ecnomus (256 BC)"
+  map_size: [100, 100]    # Large open sea engagement
+  environment:
+    wind_dir: 2
+    wind_strength: 3      # High wind; positioning relative to wind is critical
+  
+  terrain: []             # Open water test
+
+  factions:
+    - id: "roman_republic"
+      color: [180, 0, 0]
+      vessels:
+        - id: "regulus_flag"
+          type: "Hexere"
+          pos: [45, 10]
+          facing: 3
+          traits: ["corvus", "marine_veterans"]
+        - id: "rom_quin_01"
+          type: "Quinquereme"
+          pos: [40, 10]
+          facing: 3
+          traits: ["corvus"]
+
+    - id: "carthage"
+      color: [218, 165, 32]
+      vessels:
+        - id: "hamilcar_flag"
+          type: "Quinquereme"
+          pos: [45, 80]
+          facing: 0
+          traits: ["reinforced_oars", "ram_master"]
+        - id: "car_quin_01"
+          type: "Quinquereme"
+          pos: [50, 80]
+          facing: 0
+          traits: ["reinforced_oars"]

@@ -1,0 +1,34 @@
+scenario:
+  name: "Battle of Salamis (480 BC)"
+  map_size: [40, 80]
+  environment:
+    wind_dir: 1           # Light breeze from the North-East
+    wind_strength: 1      # Low impact on MP
+    tide_dir: 3           # Moving South
+  
+  terrain:
+    - type: "island"
+      name: "Psyttaleia"
+      coords: [[20, 30], [21, 30], [20, 31]]
+    - type: "shoal"       # Half MP cost to enter, risk of grounding
+      coords: [[5, 10], [6, 10], [5, 11]]
+
+  factions:
+    - id: "hellenic_league"
+      color: [139, 0, 0]  # Crimson
+      vessels:
+        - id: "themistocles_flag"
+          type: "Trireme"
+          pos: [18, 25]
+          facing: 3
+          traits: ["reinforced_prow", "agile"]
+    
+    - id: "persian_empire"
+      color: [75, 0, 130] # Purple
+      vessels:
+        - id: "xerxes_main_01"
+          type: "Deceres"
+          pos: [22, 45]
+          facing: 0
+          traits: ["artillery", "tower"]
+          marines: 300
