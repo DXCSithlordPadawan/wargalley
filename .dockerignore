@@ -1,0 +1,37 @@
+# Files and directories excluded from the container image build context.
+# Works for both Podman (Containerfile) and Docker (Dockerfile).
+
+# PyInstaller build output
+dist/
+build/
+*.spec
+
+# Generated assets and logs (mounted as volumes at runtime)
+assets/
+analytics/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variable files (never bake secrets into the image)
+.env
+
+# Developer tooling
+.git/
+.gitignore
+*.md
+docs/
+
+# Windows launch scripts (not needed inside the container)
+*.bat
+*.ps1
+*.bash

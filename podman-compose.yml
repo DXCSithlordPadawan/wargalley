@@ -1,0 +1,39 @@
+# War Galley Digital Engine — Podman Compose / Docker Compose
+# Compatible with: podman-compose, docker compose v2
+#
+# Usage:
+#   podman-compose up -d          (Podman)
+#   docker compose up -d          (Docker)
+#
+# The service exposes the game server on port 5000.
+
+version: "3.9"
+
+services:
+  wargalley:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: wargalley:latest
+    container_name: wargalley
+    ports:
+      - "5000:5000"
+    environment:
+      # Set SECRET_KEY in a .env file or as a host environment variable for production.
+      # If unset, the server generates a secure random key on startup (see src/server.py).
+      - SECRET_KEY
+      - HOST=0.0.0.0
+      - PORT=5000
+    volumes:
+      # Persist generated assets and audit logs outside the container
+      - ./assets:/app/assets
+      - ./analytics:/app/analytics
+    restart: unless-stopped
+    # CIS Level 2 hardening: drop all Linux capabilities, read-only root fs
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
